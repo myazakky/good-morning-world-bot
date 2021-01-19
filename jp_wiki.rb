@@ -3,11 +3,11 @@ require 'net/https'
 require 'json'
 
 class JpWiki
-  attr_reader :city, :jp_name
+  attr_reader :city, :title
 
   def initialize(city)
     @city = city
-    @jp_name = get_link.split('/').last
+    @title = get_link.split('/').last
   end
 
   def get_link
@@ -17,7 +17,7 @@ class JpWiki
     link
   end
 
-  def get_extract
+  def get_description
     json['extract']
   end
 

@@ -31,7 +31,7 @@ bot.message(content: '起きた') do |event|
   event.channel.send_embed do |embed|
     embed.title = jp_wiki.get_title
     embed.url = jp_wiki.get_link
-    embed.description = jp_wiki.get_extract
+    embed.description = jp_wiki.get_description
   end
 end
 
