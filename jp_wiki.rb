@@ -27,8 +27,12 @@ class JpWiki
 
   private
 
+  def query
+    host = URI.parse(get_link).host
+    "https://#{host}/w/api.php?format=json&action=query&prop=extracts&exintro&explaintext&titles=#{title}"
+  end
+
   def json
-    query = "https://ja.wikipedia.org/w/api.php?format=json&action=query&prop=extracts&exintro&explaintext&titles=#{jp_name}"
     uri = URI.parse(query)
     json = Net::HTTP.get(uri)
     JSON.parse(json)['query']['pages'].to_a.flatten.last
